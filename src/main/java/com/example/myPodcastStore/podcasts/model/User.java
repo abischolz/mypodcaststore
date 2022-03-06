@@ -9,10 +9,10 @@ public class User {
     @GeneratedValue
     private Integer id;
     public Integer getId() {
-        return this.id
+        return this.id;
     }
 
-    public Integer setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
