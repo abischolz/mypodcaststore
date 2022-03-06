@@ -2,6 +2,7 @@ package com.example.myPodcastStore.podcasts.model;
 
 import javax.persistence.*;
 
+//this is coming from a 3rd party API - do i need to save this? current answer: i think so, because i'm using a custom
 @Entity
 @Table(name = "PODCASTS")
 public class Podcast {
