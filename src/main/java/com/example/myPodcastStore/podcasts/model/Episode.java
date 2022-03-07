@@ -5,7 +5,7 @@ import javax.persistence.*;
 //this could be an extension of the podcast class - they share the same information, but epidode has additional data
 @Entity
 @Table(name="EPISODES")
-public class Episode {
+public class Episode extends Podcast {
     @Id
     @GeneratedValue
     private Integer id;
