@@ -2,32 +2,22 @@ package com.example.myPodcastStore.podcasts.controller;
 
 import com.example.myPodcastStore.podcasts.model.Podcast;
 import com.example.myPodcastStore.podcasts.repository.PodcastRepository;
+import com.example.myPodcastStore.podcasts.services.PodcastService;
 import com.listennotes.podcast_api.ApiResponse;
-import io.github.cdimascio.dotenv.Dotenv;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import com.listennotes.podcast_api.Client;
-import com.listennotes.podcast_api.exception.ListenApiException;
-
-
-
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class PodcastController {
     private final PodcastRepository podcastRepository;
-    public PodcastController(final PodcastRepository podcastRepository) {
+    private final PodcastService podcastService;
+
+
+    public PodcastController(final PodcastRepository podcastRepository, final PodcastService podcastService) {
         this.podcastRepository = podcastRepository;
+        this.podcastService = podcastService;
     }
     String listenEndPoint = "https://listen-api-test.listennotes.com/api/v2";
 
@@ -41,18 +31,8 @@ public class PodcastController {
 
     @GetMapping("/test")
     private void getTest() {
-        try {
-            Dotenv apiKey = Dotenv.load();
-            Client objClient = new Client(apiKey.get("PODCAST_API_KEY"));
-
-            HashMap<String, String> parameter = new HashMap<>();
-            parameter.put("id", "4d3fe717742d4963a85562e9f84d8c79");
-            ApiResponse response = objClient.fetchPodcastById(parameter);
-            System.out.println(response.toJSON().toString(2));
-
-        } catch (ListenApiException e) {
-            e.printStackTrace();
-        }
+        ApiResponse response = podcastService.getTest();
+        System.out.println(response.toJSON().toString(2));
 
     }
 
