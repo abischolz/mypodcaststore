@@ -1,6 +1,6 @@
-package com.example.myPodcastStore.podcasts.repository;
+package com.example.myPodcastStore.repository;
 
-import com.example.myPodcastStore.podcasts.model.User;
+import com.example.myPodcastStore.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository <User, Integer> {

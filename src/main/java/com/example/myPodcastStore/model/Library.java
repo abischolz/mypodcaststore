@@ -1,6 +1,6 @@
-package com.example.myPodcastStore.podcasts.model;
+package com.example.myPodcastStore.model;
 
-import com.example.myPodcastStore.podcasts.LibraryType;
+import com.example.myPodcastStore.LibraryType;
 
 import javax.persistence.*;
 
@@ -28,4 +28,5 @@ public class Library {
     public void setType(LibraryType type) {
         this.type = type;
     }
+
 }

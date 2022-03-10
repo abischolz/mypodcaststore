@@ -1,4 +1,4 @@
-package com.example.myPodcastStore.podcasts.model;
+package com.example.myPodcastStore.model;
 
 import javax.persistence.*;
 
@@ -67,4 +67,5 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 }
