@@ -1,7 +1,7 @@
-package com.example.myPodcastStore.podcasts.controller;
+package com.example.myPodcastStore.controller;
 
-import com.example.myPodcastStore.podcasts.model.User;
-import com.example.myPodcastStore.podcasts.repository.UserRepository;
+import com.example.myPodcastStore.model.User;
+import com.example.myPodcastStore.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

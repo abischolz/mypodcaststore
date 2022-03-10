@@ -1,10 +1,7 @@
-package com.example.myPodcastStore.podcasts.controller;
+package com.example.myPodcastStore.controller;
 
-import com.example.myPodcastStore.podcasts.repository.LibraryRepository;
-import org.apache.tomcat.jni.Library;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.myPodcastStore.repository.LibraryRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.example.myPodcastStore.podcasts.services;
+package com.example.myPodcastStore.services;
 
 import com.listennotes.podcast_api.ApiResponse;
 import com.listennotes.podcast_api.Client;
@@ -14,16 +14,36 @@ public class PodcastService {
     String listenEndPoint = "https://listen-api-test.listennotes.com/api/v2";
 
 
-    public ApiResponse getTest() {
+    public String getBestPodcasts() {
         try {
             String apiKey = this.dotenv.get("PODCAST_API_KEY");
             Client objClient = new Client(apiKey);
 
             HashMap<String, String> parameters = new HashMap<>();
-            parameters.put("id", "4d3fe717742d4963a85562e9f84d8c79");
+            parameters.put("page", "1");
+
+
+            ApiResponse response = objClient.fetchBestPodcasts(parameters);
+            return response.toJSON().toString();
+        } catch (ListenApiException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getPodcastById(Integer id) throws ListenApiException {
+
+        try {
+            String apiKey = this.dotenv.get("PODCAST_API_KEY");
+            Client objClient = new Client(apiKey);
+
+            HashMap<String, String> parameters = new HashMap<>();
+            parameters.put("id", id.toString());
+
+
             ApiResponse response = objClient.fetchPodcastById(parameters);
-            System.out.println(response.toJSON().toString(2));
-            return response;
+            return response.toJSON().toString();
+
         } catch (ListenApiException e) {
             e.printStackTrace();
         }

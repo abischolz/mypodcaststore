@@ -1,4 +1,4 @@
-package com.example.myPodcastStore.podcasts;
+package com.example.myPodcastStore;
 
 public enum LibraryType {
     PODCAST,

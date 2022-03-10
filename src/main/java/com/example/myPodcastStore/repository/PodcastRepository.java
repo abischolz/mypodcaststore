@@ -1,6 +1,6 @@
-package com.example.myPodcastStore.podcasts.repository;
+package com.example.myPodcastStore.repository;
 
-import com.example.myPodcastStore.podcasts.model.Podcast;
+import com.example.myPodcastStore.model.Podcast;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
