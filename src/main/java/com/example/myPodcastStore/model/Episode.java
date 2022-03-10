@@ -65,4 +65,5 @@ public class Episode extends Media {
     public void setTranscript(String transcript) {
         this.transcript = transcript;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.myPodcastStore.services;
 
+import com.example.myPodcastStore.model.Podcast;
 import com.listennotes.podcast_api.ApiResponse;
 import com.listennotes.podcast_api.Client;
 import com.listennotes.podcast_api.exception.ListenApiException;
@@ -11,12 +12,12 @@ import java.util.HashMap;
 @Service
 public class PodcastService {
     private final Dotenv dotenv = Dotenv.load();
+    private final String apiKey = dotenv.get("PODCAST_API_KEY");
     String listenEndPoint = "https://listen-api-test.listennotes.com/api/v2";
 
 
     public String getBestPodcasts() {
         try {
-            String apiKey = this.dotenv.get("PODCAST_API_KEY");
             Client objClient = new Client(apiKey);
 
             HashMap<String, String> parameters = new HashMap<>();
@@ -34,7 +35,6 @@ public class PodcastService {
     public String getPodcastById(String id) throws ListenApiException {
 
         try {
-            String apiKey = this.dotenv.get("PODCAST_API_KEY");
             Client objClient = new Client(apiKey);
 
             HashMap<String, String> parameters = new HashMap<>();
@@ -49,6 +49,19 @@ public class PodcastService {
         }
         return null;
     }
+
+    public String searchPodcasts(HashMap<String, String> parameters) {
+        try {
+            Client objClient = new Client(apiKey);
+            ApiResponse apiResponse = objClient.search(parameters);
+            return apiResponse.toJSON().toString();
+
+        } catch (ListenApiException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 

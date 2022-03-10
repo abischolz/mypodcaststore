@@ -9,9 +9,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.listennotes.podcast_api.exception.ListenApiException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+@RequestMapping("/podcasts")
 public class PodcastController {
     private final PodcastRepository podcastRepository;
     private final PodcastService podcastService;
@@ -24,7 +27,7 @@ public class PodcastController {
     String listenEndPoint = "https://listen-api-test.listennotes.com/api/v2";
 
 
-    @GetMapping("/podcasts")
+    @GetMapping("/")
     private Object getBestPodcasts() throws JsonProcessingException {
         System.out.println("==== get podcasts ====");
 
@@ -38,7 +41,7 @@ public class PodcastController {
 
 
 
-    @GetMapping("/podcasts/{id}")
+    @GetMapping("/{id}")
     public Podcast getPodcastById(@PathVariable("id") String id) throws JsonProcessingException, ListenApiException {
         System.out.println("==== get podcast ====");
 
@@ -53,4 +56,34 @@ public class PodcastController {
         return podcast;
 
     }
+
+    @GetMapping("/search")
+    public Object searchPodcasts(@RequestBody(required = true) HashMap<String, String> parameters) throws ListenApiException, JsonProcessingException {
+
+        System.out.println("==== search podcasts ====");
+
+        String response = podcastService.searchPodcasts(parameters);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Object responseJava = objectMapper.readValue(response, Object.class);
+        return responseJava;
+
+    }
+
+    @PostMapping("/add")
+    public Podcast addPodcast(@RequestBody(required = true) Podcast podcast) {
+        System.out.println("==== add podcast ====");
+
+        podcastRepository.save(podcast);
+        return podcast;
+    }
+
+//    @DeleteMapping("/{id}/delete")
+//    public Podcast deletePodcast(@PathVariable("id") String id) {
+//        System.out.println("==== delete podcast ====");
+//
+//    }
+
+//    @PutMapping("/{id}/like")
+
 }

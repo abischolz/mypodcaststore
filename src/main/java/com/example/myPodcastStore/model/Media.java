@@ -57,8 +57,13 @@ public class Media {
         this.thumbnail = thumbnail;}
 
 
+    private Integer likes;
 
+    public Integer getLikes() {
+        return likes;
+    }
 
-
-
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
 }
