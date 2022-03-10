@@ -1,5 +1,7 @@
 package com.example.myPodcastStore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,17 +10,18 @@ import java.util.Date;
 
 @Entity
 @Table(name = "EPISODE")
+@JsonIgnoreProperties
 public class Episode extends Media {
 
     @Id
-    @GeneratedValue
-    private Integer id;
 
-    public Integer getId() {
+    private String id;
+
+    public String getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
     @Column(name="LINK")

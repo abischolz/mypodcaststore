@@ -31,14 +31,14 @@ public class PodcastService {
         return null;
     }
 
-    public String getPodcastById(Integer id) throws ListenApiException {
+    public String getPodcastById(String id) throws ListenApiException {
 
         try {
             String apiKey = this.dotenv.get("PODCAST_API_KEY");
             Client objClient = new Client(apiKey);
 
             HashMap<String, String> parameters = new HashMap<>();
-            parameters.put("id", id.toString());
+            parameters.put("id", id);
 
 
             ApiResponse response = objClient.fetchPodcastById(parameters);

@@ -1,6 +1,10 @@
 package com.example.myPodcastStore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+
 
 //this is coming from a 3rd party API - do i need to save this? current answer: i think so, because i'm using a custom
 
@@ -8,16 +12,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PODCASTS")
+@JsonIgnoreProperties
 public class Podcast  extends Media {
     @Id
-    @GeneratedValue
-    private Integer id;
+    private String id;
 
-    public Integer getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -55,13 +59,30 @@ public class Podcast  extends Media {
     }
 
     @Column(name="TOTAL_EPISIDES")
-    public Integer totalEpisodes;
+    public Integer total_episodes;
     public Integer getTotalEpisodes() {
-        return totalEpisodes;
+        return total_episodes;
     }
 
-    public void setTotalEpisodes(Integer totalEpisodes) {
-        this.totalEpisodes = totalEpisodes;
+    public void setTotalEpisodes(Integer total_episodes) {
+        this.total_episodes = total_episodes;
     }
 
+    private ArrayList<Object> episodes;
+
+    public Integer getTotal_episodes() {
+        return total_episodes;
+    }
+
+    public void setTotal_episodes(Integer total_episodes) {
+        this.total_episodes = total_episodes;
+    }
+
+    public ArrayList<Object> getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(ArrayList<Object> episodes) {
+        this.episodes = episodes;
+    }
 }

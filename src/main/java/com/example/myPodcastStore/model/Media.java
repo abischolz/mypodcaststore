@@ -6,20 +6,6 @@ import javax.persistence.*;
 
 public class Media {
 
-
-    @Column(name="LISTEN_ID")
-
-    public Long listenID;
-    public Long getListenID() {
-        return listenID;
-    }
-
-    public void setListenID(Long listenID) {
-        this.listenID = listenID;
-    }
-
-
-
     @Column(name="TITLE")
 
     private String title;
