@@ -36,6 +36,7 @@ public class PodcastController {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         Object responseJava = objectMapper.readValue(response, Object.class);
+
         return responseJava;
     }
 
@@ -53,6 +54,7 @@ public class PodcastController {
 
 
         Podcast podcast = objectMapper.readValue(response, Podcast.class);
+        podcast.getEpisodes();
         return podcast;
 
     }
