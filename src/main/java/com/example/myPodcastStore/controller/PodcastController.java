@@ -78,17 +78,19 @@ public class PodcastController {
         return newPodcast;
     }
 
-    @DeleteMapping("/podcast/{id}/delete")
+    @DeleteMapping("/podcasts/{id}/delete")
     public Podcast deletePodcast(@PathVariable("id") String id) throws ListenApiException, JsonProcessingException {
         System.out.println("==== delete podcast ====");
         String response = podcastService.deletePodcast(id);
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
         Podcast deletedPodcast = objectMapper.readValue(response, Podcast.class);
         return deletedPodcast;
 
     }
 
-    @PutMapping("/podcast/{id}/like")
+    @PutMapping("/podcasts/{id}/like")
     public Podcast likePodcast(@PathVariable("id") String id) {
         System.out.println("==== like podcast ====");
         Podcast podcast = podcastService.likePodcast(id);

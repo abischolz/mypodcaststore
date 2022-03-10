@@ -68,6 +68,7 @@ public class Podcast  extends Media {
         this.total_episodes = total_episodes;
     }
 
+    @Transient
     private ArrayList<Object> episodes;
 
     public Integer getTotal_episodes() {
